@@ -26,8 +26,8 @@ export default function MenuHeader({ onClick, isOpen }) {
     <section
       className={
         isOpen
-          ? "Quicksand !transition-all container !duration-500 start-0 fixed px-[20px] top-0 py-[12px] backdrop-blur-sm bg-[#333333]/80 z-10"
-          : "Quicksand !transition-all container !duration-500 start-0 fixed px-[20px] -top-[1200px] py-[12px] backdrop-blur-sm bg-[#333333]/80 z-10"
+          ? "Quicksand !transition-all w-screen !duration-500 start-0 fixed px-[20px] top-0 py-[12px] backdrop-blur-sm bg-[#333333]/95 z-10"
+          : "Quicksand !transition-all w-screen !duration-1000 start-0 fixed px-[20px] -top-[3000px] py-[12px] backdrop-blur-sm bg-[#333333]/80 z-10"
       }>
       {/* header */}
       <div className="flex justify-between">
@@ -62,7 +62,7 @@ export default function MenuHeader({ onClick, isOpen }) {
 
       <div className="overflow-auto h-screen">
         {/* menu kategori */}
-        <div className="w-full border-b-2 border-[#333333] pb-[30px] flex flex-wrap gap-x-2 gap-y-[20px] justify-center mt-[30px]">
+        <div className="w-full border-b-2 border-[#333333] pb-[30px] flex flex-wrap gap-x-[25px] gap-y-[20px] justify-center mt-[30px]">
           {kategori.map((item, index) => (
             <button
               key={index}

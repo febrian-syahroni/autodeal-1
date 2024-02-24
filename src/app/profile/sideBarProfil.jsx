@@ -15,61 +15,74 @@ import { useState } from "react";
 
 export default function SideBarProfil() {
   const [isOpen, setIsOpen] = useState(false);
+
+  function handleDetail() {
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <section className="grid lg:flex lg:w-[305px] lg:h-full bg-white rounded-[12px]">
-      <div className="p-[20px] lg:flex lg:flex-col lg:h-full grid gap-[20px]">
-        <div className="pt-[20px] flex lg:flex-col lg:h-auto items-center gap-[20px]">
-          <button className="rounded-full lg:w-[120px] lg:h-[120px] w-[76px] h-[76px] bg-gray-500">
-            A
-          </button>
-          <div className="flex lg:text-center flex-col">
-            <h1 className="font-[600] text-[18px] text-[#333333]">Anonim</h1>
-            <p className="font-[400] text-[12px] text-[#AAAAAA]">
-              Bergabung pada September 2021
-            </p>
+    <div className="grid lg:contents rounded-[12px] overflow-hidden">
+      <section className="grid lg:rounded-[12px] lg:justify-center lg:flex lg:w-[305px] lg:h-full bg-white">
+        <div className="p-[20px] lg:flex lg:flex-col lg:h-full grid gap-[20px]">
+          <div className="pt-[20px] flex lg:flex-col lg:h-auto items-center gap-[20px]">
+            <button className="rounded-full lg:w-[120px] lg:h-[120px] w-[76px] h-[76px] bg-gray-500">
+              A
+            </button>
+            <div className="flex lg:text-center flex-col">
+              <h1 className="font-[600] text-[18px] text-[#333333]">Anonim</h1>
+              <p className="font-[400] text-[12px] text-[#AAAAAA]">
+                Bergabung pada September 2021
+              </p>
+            </div>
+          </div>
+          <Link href={"/profile/edit"} className="flex justify-center">
+            <button className="flex rounded-[8px] gap-[10px] py-[13px] justify-center items-center text-[14px] font-[600] md:w-full w-full h-[44px] bg-[#f5f5f5]">
+              <Profil className="" />
+              Edit Profil
+            </button>
+          </Link>
+          <DetailProfil className={"hidden lg:contents"} />
+        </div>
+      </section>
+
+      {/* dropdown */}
+      <div
+        className={
+          isOpen
+            ? "relative lg:hidden grid bg-white px-[20px] transition-all duration-500 h-full pb-[102px] overflow-hidden"
+            : "relative lg:hidden grid bg-white px-[20px] transition-all items-end duration-500 h-[82px] overflow-hidden"
+        }>
+        {/* <DetailProfil /> */}
+        <DetailProfil className={""} />
+        <div className="absolute w-full px-[20px] pb-[20px] bg-white bottom-0 start-0 grid gap-[20px]">
+          <div className="w-full lg:hidden h-[1px] border-[1px] border-[#e5e5e5]"></div>
+          <div className="lg:hidden justify-end flex">
+            {!isOpen ? (
+              <button
+                onClick={handleDetail}
+                className="flex font-[500] text-[12px] text-[#aaaaaa] active:scale-90 items-center justify-between bg-[#ececec] w-[169px] h-[40px] rounded-[8px] px-[16px] py-[10px]">
+                <p className="">Lihat lebih banyak</p>
+                <FaAngleDown className="w-[10px] h-[10px]" />
+              </button>
+            ) : (
+              <button
+                onClick={handleDetail}
+                className="flex font-[500] text-[12px] text-[#aaaaaa] active:scale-90 items-center justify-between bg-[#ececec] w-[169px] h-[40px] rounded-[8px] px-[16px] py-[10px]">
+                <p className="">Lihat lebih sedikit</p>
+                <FaAngleUp className="w-[10px] h-[10px]" />
+              </button>
+            )}
           </div>
         </div>
-        <Link href={"/profile/edit"} className="flex justify-center">
-          <button className="flex rounded-[8px] gap-[10px] py-[13px] justify-center items-center text-[14px] font-[600] md:w-full w-full h-[44px] bg-[#f5f5f5]">
-            <Profil className="" />
-            Edit Profil
-          </button>
-        </Link>
-
-        {/* dropdown */}
-        <div className="lg:contents md:hidden hidden">
-          <DetailProfil />
-        </div>
-        {isOpen && <DetailProfil />}
-        <div className="w-full lg:hidden h-[1px] border-[1px] border-[#e5e5e5]"></div>
-        <div className="flex lg:h-auto lg:hidden justify-end">
-          <button onClick={() => setIsOpen((prev) => !prev)}>
-            {!isOpen ? (
-              <div className="flex hover:scale-110 active:scale-100 items-center justify-between bg-[#ececec] w-[169px] h-[40px] rounded-[8px] px-[16px] py-[10px]">
-                <p className="font-[500] text-[12px] text-[#aaaaaa]">
-                  Lihat lebih banyak
-                </p>
-                <FaAngleDown className="w-[10px] h-[10px]" />
-              </div>
-            ) : (
-              <div className="flex hover:scale-110 active:scale-100 items-center justify-between bg-[#ececec] w-[169px] h-[40px] rounded-[8px] px-[16px] py-[10px]">
-                <p className="font-[500] text-[12px] text-[#aaaaaa]">
-                  Lihat lebih sedikit
-                </p>
-                <FaAngleUp className="w-[10px] h-[10px]" />
-              </div>
-            )}
-          </button>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }
 
-function DetailProfil() {
+function DetailProfil({ className }) {
   return (
-    <>
-      <div className="grid gap-[20px]">
+    <div className={`${className} grid gap-[20px]`}>
+      <div className={"grid gap-[20px]"}>
         <h1 className="font-[500] text-[12px] text-[#aaaaaa]">BIO</h1>
         <p className="font-[500] text-[14px]">
           Penjual terpercaya sejak tahun 2010. Bukan penjual musiman yang cepat
@@ -128,6 +141,6 @@ function DetailProfil() {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }

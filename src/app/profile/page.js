@@ -12,7 +12,7 @@ export default async function Page() {
 
   return (
     <div className="overflow-x-hidden background bg-[#F4F5F7]">
-      <div className="fixed shadow-sm flex-col z-10">
+      <div className="fixed shadow-sm flex-col z-20">
         <HeaderProfil className="z-10" />
         <Category />
         <Endpoint className="bg-[#F4F5F7]" />

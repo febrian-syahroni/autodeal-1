@@ -112,7 +112,7 @@ function Content({ api }) {
     <div className="">
       <div className="flex justify-center overflow-hidden relative h-[150px] md:h-[250px] rounded-t-[12px] bg-transparent">
         <Image
-          className="md:w-full md:h-full absolute object-cover h-[150px]"
+          className="w-full h-full absolute object-cover"
           width={170}
           height={150}
           src={car_model}
