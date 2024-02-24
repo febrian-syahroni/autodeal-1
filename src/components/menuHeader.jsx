@@ -26,7 +26,7 @@ export default function MenuHeader({ onClick, isOpen }) {
     <section
       className={
         isOpen
-          ? "Quicksand !transition-all w-screen !duration-500 start-0 fixed px-[20px] top-0 py-[12px] backdrop-blur-sm bg-[#333333]/95 z-10"
+          ? "Quicksand !transition-all w-screen !duration-500 start-0 fixed px-[20px] top-0 py-[12px] backdrop-blur-[2px] bg-black/90 z-10"
           : "Quicksand !transition-all w-screen !duration-1000 start-0 fixed px-[20px] -top-[3000px] py-[12px] backdrop-blur-sm bg-[#333333]/80 z-10"
       }>
       {/* header */}

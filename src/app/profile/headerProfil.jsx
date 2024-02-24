@@ -123,7 +123,7 @@ export default function HeaderProfil({ className }) {
                 <RedBall className="absolute top-[-3px] end-[-3px]" />
               </button>
               {notif && (
-                <div className="absolute flex flex-col items-center shadow-lg end-0 top-6 bg-white z-20 w-max p-10 rounded">
+                <div className="absolute flex flex-col items-center shadow-lg end-0 top-6 bg-white z-50 w-max p-10 rounded">
                   <IoNotificationsOffOutline
                     size={50}
                     className="text-gray-500"
