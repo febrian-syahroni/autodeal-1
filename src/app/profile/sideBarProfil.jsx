@@ -35,7 +35,10 @@ export default function SideBarProfil() {
               </p>
             </div>
           </div>
-          <Link href={"/profile/edit"} className="flex justify-center">
+          <Link
+            id="edit-profil"
+            href={"/profile/edit"}
+            className="flex justify-center">
             <button className="flex rounded-[8px] gap-[10px] py-[13px] justify-center items-center text-[14px] font-[600] md:w-full w-full h-[44px] bg-[#f5f5f5]">
               <Profil className="" />
               Edit Profil
@@ -65,12 +68,13 @@ export default function SideBarProfil() {
                 <FaAngleDown className="w-[10px] h-[10px]" />
               </button>
             ) : (
-              <button
+              <Link
+                href={"#edit-Profil"}
                 onClick={handleDetail}
-                className="flex font-[500] text-[12px] text-[#aaaaaa] active:scale-90 items-center justify-between bg-[#ececec] w-[169px] h-[40px] rounded-[8px] px-[16px] py-[10px]">
+                className="flex transition-all duration-500 font-[500] text-[12px] text-[#aaaaaa] active:scale-90 items-center justify-between bg-[#ececec] w-[169px] h-[40px] rounded-[8px] px-[16px] py-[10px]">
                 <p className="">Lihat lebih sedikit</p>
                 <FaAngleUp className="w-[10px] h-[10px]" />
-              </button>
+              </Link>
             )}
           </div>
         </div>
