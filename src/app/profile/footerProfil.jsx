@@ -6,7 +6,7 @@ import Youtube from "../../../public/svgs/youtube";
 
 export default function FooterProfil() {
   return (
-    <section className="hidden lg:flex lg:flex-col bg-white w-full h-[122px]">
+    <section className="hidden z-40 lg:sticky lg:flex bottom-0 lg:flex-col bg-white w-full h-[122px]">
       <div className="w-[1280px] h-[122px] mx-auto">
         <div className="flex h-full justify-between items-center">
           <div className="flex flex-col gap-[10px]">

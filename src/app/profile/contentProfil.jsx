@@ -92,7 +92,7 @@ export default function ContentProfil({ api }) {
         {api.map((value, index) => (
           <div
             key={index}
-            className="cursor-pointer active:scale-95 lg:hover:scale-105 lg:active:scale-100 duration-200 h-auto md:h-auto rounded-[12px] bg-white">
+            className="active:scale-95 lg:hover:scale-105 lg:active:scale-105 duration-200 h-auto md:h-auto rounded-[12px] bg-white">
             <Content api={value} />
           </div>
         ))}
@@ -109,12 +109,13 @@ function Content({ api }) {
   const { car, car_model } = api;
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="">
+    <div>
       <div className="flex justify-center overflow-hidden relative h-[150px] md:h-[250px] rounded-t-[12px] bg-transparent">
         <Image
           className="w-full h-full absolute object-cover"
           width={170}
           height={150}
+          alt=""
           src={car_model}
         />
         <button
@@ -139,16 +140,16 @@ function Content({ api }) {
         <p className="flex justify-center items-center mt-[10px] bg-[#fff7e1] w-[84px] md:w-[106px] h-[20px] md:h-[27px] rounded-[6px] md:rounded-[8px] px-[6px] md:px-[10px] py-[4px] md:py-[6px] font-[700] text-[10px] md:text-[12px] text-[#d7a901]">
           2022-1500 cc
         </p>
-        <p className="mt-[10] md:mt-[11px] font-[500] text-[12px] md:text-[14px] text-[#333333]">
+        <button className="mt-[10] focus:rounded-[6px] focus:bg-slate-300 focus:border focus:px-2 md:mt-[11px] font-[500] text-[12px] md:text-[14px] text-[#333333]">
           {car}
-        </p>
+        </button>
         <p className="mt-[4px] font-[700] text-[14px] md:text-[24px] text-[#333333]">
           Rp 3.518.990.000
         </p>
         <div className="md:gap-1 flex justify-between items-center font-[500] text-[10px] md:text-[12px] text-[#aaaaaa] mt-[11px] md:mt-[16px]">
           <div className="flex gap-[6px] justify-between items-center">
             <div className="flex w-[12px] h-[12px] md:w-[16px] md:h-[16px]">
-              <Image src={"/icons/map.png"} width={50} height={50} />
+              <Image src={"/icons/map.png"} width={50} height={50} alt="" />
             </div>
             <span className="text-[10px] font-[500]">
               Jakarta Barat, kalideres
