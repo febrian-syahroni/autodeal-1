@@ -25,14 +25,6 @@ export default function HeaderProfil({ className }) {
     setIsOpen(!isOpen);
   }
 
-  function handleProfil() {
-    setProfil(!profil);
-  }
-
-  function handleFavorite() {
-    setFavorite(!favorite);
-  }
-
   function handleNotif() {
     setNotif(!notif);
   }
@@ -81,56 +73,66 @@ export default function HeaderProfil({ className }) {
           </form>
 
           <div className="flex gap-8 items-center">
-            <div className="relative flex">
-              <button
-                onClick={handleProfil}
-                className="hover:scale-110 active:scale-100 bg-orange-200 w-[44px] h-[44px] cursor-pointer rounded-full">
+            <div
+              onMouseOver={() => setProfil(true)}
+              onMouseLeave={() => setProfil(false)}
+              className="relative flex">
+              <button className="hover:scale-110 active:scale-100 bg-orange-200 w-[44px] h-[44px] cursor-pointer rounded-full">
                 A
               </button>
-              {profil && (
-                <div className="absolute border gap-3 flex flex-col items-center shadow-lg end-0 top-12 bg-white z-20 w-max p-10 rounded">
-                  <div className="hover:scale-110 active:scale-100 bg-orange-200 cursor-pointer rounded-full w-[30px] h-[30px] flex items-center justify-center">
-                    A
-                  </div>
-                  <h1 className="cursor-pointer hover:scale-110 active:scale-100">
-                    Dashboard
-                  </h1>
-                  <h1 className="cursor-pointer hover:scale-110 active:scale-100">
-                    Log Out
-                  </h1>
+              <div
+                onMouseLeave={() => setProfil(false)}
+                className={`${
+                  profil ? "flex" : "hidden"
+                } absolute border gap-3 flex-col  items-center shadow-lg end-0 top-12 bg-white w-max p-10 rounded`}>
+                <div className="hover:scale-110 active:scale-100 bg-orange-200 cursor-pointer rounded-full w-[30px] h-[30px] flex items-center justify-center">
+                  A
                 </div>
-              )}
+                <h1 className="cursor-pointer hover:scale-110 active:scale-100">
+                  Dashboard
+                </h1>
+                <h1 className="cursor-pointer hover:scale-110 active:scale-100">
+                  Log Out
+                </h1>
+              </div>
             </div>
             <span className="h-[24px] border border-[#e5e5e5]"></span>
-            <div className="relative flex">
-              <button
-                onClick={handleFavorite}
-                className="hover:scale-110 active:scale-100 relative">
+            <div
+              onMouseLeave={() => setFavorite(false)}
+              onMouseEnter={() => setFavorite(true)}
+              className="relative flex">
+              <button className="hover:scale-110 active:scale-100 relative">
                 <HeartOutline />
               </button>
-              {favorite && (
-                <div className="absolute flex flex-col items-center shadow-lg end-0 top-6 bg-white z-20 w-max p-10 rounded">
-                  <IoHeartDislikeOutline size={50} className="text-gray-500" />
-                  <h1>Tidak ada item favorit</h1>
-                </div>
-              )}
+              <div
+                onMouseLeave={() => setFavorite(false)}
+                className={`${
+                  favorite ? "flex" : "hidden"
+                } absolute flex-col items-center shadow-lg end-0 border top-5 bg-white z-20 w-max p-10 rounded`}>
+                <IoHeartDislikeOutline size={50} className="text-gray-500" />
+                <h1>Tidak ada item favorit</h1>
+              </div>
             </div>
-            <div className="relative flex">
-              <button
-                onClick={handleNotif}
-                className="hover:scale-110 active:scale-100 relative">
+            <div
+              onMouseEnter={() => setNotif(true)}
+              onMouseLeave={() => setNotif(false)}
+              className="relative flex">
+              <button className="hover:scale-110 active:scale-100 relative">
                 <Bell />
                 <RedBall className="absolute top-[-3px] end-[-3px]" />
               </button>
-              {notif && (
-                <div className="absolute flex flex-col items-center shadow-lg end-0 top-6 bg-white z-50 w-max p-10 rounded">
-                  <IoNotificationsOffOutline
-                    size={50}
-                    className="text-gray-500"
-                  />
-                  <h1>Tidak ada notifikasi</h1>
-                </div>
-              )}
+
+              <div
+                onMouseLeave={() => setNotif(false)}
+                className={`${
+                  notif ? "flex" : "hidden"
+                } absolute border flex-col items-center shadow-lg end-0 top-5 bg-white z-50 w-max p-10 rounded`}>
+                <IoNotificationsOffOutline
+                  size={50}
+                  className="text-gray-500"
+                />
+                <h1>Tidak ada notifikasi</h1>
+              </div>
             </div>
           </div>
         </section>

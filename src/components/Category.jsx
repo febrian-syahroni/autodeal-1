@@ -13,13 +13,18 @@ import RIghtArrowDark from "../../public/svgs/panah-kanan-abu";
 
 export default function Category() {
   const categoryItems = [
-    { scr: "/icons/semua.png", alt: "semuaaaaaaaa" },
+    { scr: "/icons/semua.png", alt: "semua" },
     { scr: "/icons/properti.png", alt: "properti" },
     { scr: "/icons/mobil.png", alt: "mobil" },
     { scr: "/icons/motor.png", alt: "motor" },
     { scr: "/icons/gadget.png", alt: "gadget" },
     { scr: "/icons/elektronik.png", alt: "gadget" },
     { scr: "/icons/olahraga.png", alt: "olahraga" },
+    { scr: "/icons/pawprint.png", alt: "pawprint" },
+    { scr: "/icons/pawprint.png", alt: "pawprint" },
+    { scr: "/icons/pawprint.png", alt: "pawprint" },
+    { scr: "/icons/pawprint.png", alt: "pawprint" },
+    { scr: "/icons/pawprint.png", alt: "pawprint" },
     { scr: "/icons/pawprint.png", alt: "pawprint" },
     { scr: "/icons/pawprint.png", alt: "pawprint" },
     { scr: "/icons/pawprint.png", alt: "pawprint" },
@@ -34,7 +39,7 @@ export default function Category() {
 
   return (
     <div className="Quicksand hidden w-full md:flex items-center h-[64px] bg-[#333333]">
-      <div className="relative max-w-[1280px] mx-auto flex !justify-between">
+      <div className="relative z-0 max-w-[1280px] mx-auto flex !justify-between">
         {/* Categories  */}
         <Swiper
           onSwiper={(swiper) => {
@@ -48,9 +53,9 @@ export default function Category() {
             setDisableNextButton(swiper.isEnd);
           }}
           pagination
-          slidesPerView={10}
+          slidesPerView={9}
           spaceBetween={8}
-          className="relative flex">
+          className="flex">
           {categoryItems.map((item, index) => (
             <SwiperSlide
               key={index}
@@ -60,13 +65,10 @@ export default function Category() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="h-full bg-gradient-to-l from-[#333333] z-10 end-[93px] w-[60px] absolute"></div>
 
         {/* Arrow Button */}
-        <div
-          className={`z-10 flex items-center gap-[6px] max-lg:hidden ${
-            categoryItems.length < 10 ? "hidden" : ""
-          }`}>
+        <div className={`flex z-10 items-center gap-[6px] max-lg:hidden `}>
+          <div className="h-full -z-10 bg-gradient-to-l from-[#333333] end-[93px] w-[60px] absolute"></div>
           <button
             onClick={() => swiperRef.current.slidePrev()}
             className="hidden md:block active:scale-95"
