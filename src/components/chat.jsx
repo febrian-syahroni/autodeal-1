@@ -6,11 +6,14 @@ import { RxPaperPlane } from "react-icons/rx";
 import { FiSmile } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BsChat } from "react-icons/bs";
 import Image from "next/image";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 export default function Chat() {
+  let inputRef = useRef;
   const [isOpen, setOpen] = useState(false);
   const [option, setOption] = useState("");
   const [attach, setAttach] = useState("");
@@ -130,7 +133,7 @@ export default function Chat() {
 
                 {/* Dropdown Option */}
                 <div
-                  className={`absolute shadow-md border overflow-hidden ${
+                  className={`z-20 absolute shadow-md border overflow-hidden ${
                     option ? "flex" : "hidden"
                   } flex-col w-[192px] h-[87px] justify-center text-start top-[40px] bg-white end-0 rounded-[12px] text-[14px] font-[400]`}>
                   <p className="hover:bg-[#FCD02F] px-[20px] grid items-center container h-full">
@@ -141,6 +144,11 @@ export default function Chat() {
                   </p>
                 </div>
               </button>
+              <div
+                onClick={handleOption}
+                className={`${
+                  option ? "" : "hidden"
+                } fixed inset-0 bg-black/50 z-10`}></div>
               <button
                 onClick={handleClick}
                 className="w-[28px] hidden md:grid justify-center items-center h-[28px] text-[#aaa]">
@@ -157,7 +165,7 @@ export default function Chat() {
                   {/* Dropdown Pesan */}
                   <div
                     onClick={handleAttach}
-                    className={`absolute overflow-hidden text-[14px] font-[400] -top-[100px] bg-white border shadow-md ${
+                    className={`z-20 absolute overflow-hidden text-[14px] font-[400] -top-[100px] bg-white border shadow-md ${
                       attach ? "flex" : "hidden"
                     } flex-col w-[151px] h-[80px] rounded-[12px] items-center`}>
                     <button className="flex hover:bg-[#FFC700] container px-[18px] h-full gap-[14px] items-center">
@@ -174,23 +182,38 @@ export default function Chat() {
                     className="flex text-[#333] justify-center items-center w-[15px] h-[15px] border rounded-full border-[#333]">
                     +
                   </button>
+                  <div
+                    onClick={handleAttach}
+                    className={`${
+                      attach ? "" : "hidden"
+                    } fixed inset-0 bg-black/50 z-10`}></div>
+
                   <button
                     onClick={handleSymbol}
                     className="relative flex text-[#333] justify-center items-center w-[15px] h-[15px] rounded-full border-[#333]">
                     <div
-                      className={`absolute start-0 shadow-md rounded-[12px] -top-[70px] border bg-white w-[150px] h-[50px] justify-center items-center ${
+                      className={`z-20 hover:bg-[#FFC700] absolute start-0 shadow-md rounded-[12px] bottom-9 border bg-white justify-center items-center ${
                         symbol ? "flex" : "hidden"
                       }`}>
-                      Empty
+                      <Picker
+                        data={data}
+                        onClick={() => inputRef.current?.focus()}
+                        onEmojiSelect={console.log}
+                        size={4}
+                      />
                     </div>
                     <FiSmile />
                   </button>
                 </div>
+
                 <input
-                  type="text"
-                  className="container border rounded-l-[8px] pl-[70px] pr-[20px] h-full"
+                  ref={(e) => {
+                    inputRef.current = e;
+                  }}
+                  className="min-h-full container border rounded-l-[8px] pl-[70px] pr-[20px]"
                   placeholder="Tulis pesan"
                 />
+
                 <button className="grid active:scale-95 text-[#333] bg-[#FFC700] px-[16px] h-full rounded-r-[8px] justify-center items-center">
                   <RxPaperPlane />
                 </button>

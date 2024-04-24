@@ -60,7 +60,7 @@ export default function ContentProfil({ api }) {
             </div>
 
             {/* Mobile */}
-            <div className="relative  bg-white rounded-[8px] justify-between flex lg:w-[165px] w-full h-full items-center">
+            <div className="relative bg-white rounded-[8px] justify-between flex lg:w-[165px] w-full h-full items-center">
               <button
                 onClick={() => setIsOpen((prev) => !prev)}
                 className="flex justify-between font-[600] h-full text-[14px] text-[#333333] w-full items-center">
@@ -73,7 +73,7 @@ export default function ContentProfil({ api }) {
               {isOpen && (
                 <div
                   onClick={handleKategori}
-                  className="font-[600] text-[14px] text-[#333333] absolute overflow-hidden flex flex-col rounded bg-white z-10 w-full left-0 top-[42px]">
+                  className="font-[600] text-[14px] text-[#333333] absolute overflow-hidden flex flex-col rounded bg-white z-50 w-full left-0 top-[42px]">
                   {kategori?.map((value) => (
                     <button
                       key={value.harga}
@@ -84,6 +84,11 @@ export default function ContentProfil({ api }) {
                   ))}
                 </div>
               )}
+              <div
+                onClick={handleKategori}
+                className={`${
+                  isOpen ? "" : "hidden"
+                } fixed inset-0 bg-black/50 z-40`}></div>
             </div>
           </div>
         </div>
